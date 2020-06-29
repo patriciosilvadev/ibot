@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{list-style: none;}
+        li{
+            text-decoration: none;
+            width: 100%; 
+            display:flex;
+            float: left;
+            border: 1px solid #cccccc ;
+            border-radius: 3px;
+            width: calc(50% - 20px) ; 
+            margin-bottom: 4px;
+            margin-left: 4px;
+        }
+        p{
+            font-size: 0.75em;
+            margin-bottom: 3px;
+        }
+        .img{
+            width: 80px;
+            height: 80px;
+            border-radius: 3px;
+        }
+    </style>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<body>
+    
+    <ul>
+        <% if(contacts){ %>
+            <% contacts.forEach(item => { %>
+                <li>
+                    <div style="width: 90px; float: left;">
+                        <% if(item.image){ %>
+                            <img class="img" src="<%= item.image %>" />
+                        <% }else{ %>
+                            <img class="img" src="http://localhost:3000/images/no-img.png" />
+                        <% } %>       
+                    </div>
+                    <div style="width: calc(100% - 90px); float: left;">
+                        
+                        <% if(!item.is_user){ %>
+                            <p>
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                (Grupo)
+                            </p>
+                        <% } %>
+                        <% if(item.name){ %>
+                            <p><%= item.name %></p>
+                        <% } %>
+                        <% if(item.pushname){ %>
+                            <p><%= item.pushname %></p>
+                        <% } %>
+                        <% if(item.formatted_name){ %>
+                            <p><%= item.formatted_name %></p>
+                        <% } %>
+                        <% if(item.is_my_contact){  %>
+                            <p>
+                                <i class="fa fa-floppy-o"></i>
+                                é um contato
+                            </p>
+                        <% } %>
+                        
+                        
+                    </div>
+                </li>
+            <% }); %>
+        <% } %>
+    </ul>
+</body>
+</html>
